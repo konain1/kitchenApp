@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
+// import { useHistory } from 'react-router-dom';
+
+
+
+
+
 
 export function Signup() {
+
+
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [users,setUsers] = useState()
-
+    const [loginButton,setLoginButton] = useState(false)
+    // const history = useHistory();   
 
     useEffect(()=>{
 
@@ -15,7 +24,20 @@ export function Signup() {
             setUsers(json.users)
         })
     },[])
+
+
+    if (!users) {
+        // Handle the case where users is null (e.g., wait for users to be fetched)
+        fetch('http://localhost:3001/users').then(async(data)=>{
+            let json = await data.json();
+
+            setUsers(json.users)
+        })
+        return
+    }
+
     function signupHandler() {
+
         let userExists = false;
         users.forEach((user) => {
             if (user.username === username || user.email == email ) {
@@ -39,7 +61,7 @@ export function Signup() {
               }).then(async(data)=>{
                 let datas = await data.json()
                 alert('signed up')
-                
+                setLoginButton(true)
               })
         }
     }
@@ -59,7 +81,7 @@ export function Signup() {
                         <label>Password</label>
                         <input type="password" name="password" onChange={(e) => setPassword(e.target.value)}></input>
                         <button type="submit" onClick={signupHandler}>signup</button>
-                      
+                        {loginButton?<button>Login</button> : ' '}
                 </div>
             </div>
         </>
