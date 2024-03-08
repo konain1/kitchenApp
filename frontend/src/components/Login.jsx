@@ -1,45 +1,55 @@
-
-import { useEffect } from "react"
-import "./Login.css"
-
+import { useState,useEffect } from "react";
 
 export function Login(){
+
+    const [email,setEmail] = useState('')
+    const [password,setPassword] = useState('')
+    const [users,SetUsers] = useState([])
+
+    // useEffect(()=>{
+    //     fetch('http://localhost:3001/login',{
+    //         method:"POST",
+    //         body:JSON.stringify({
+    //             email:email,
+    //             password:password
+    //         }),
+    //         headers:{
+    //             "content-type":"application/json"
+    //         }
+    //     }).then(async function(data){
+    //     let json = await data.json();
+    //     setUserid(json.users[0]._id)
+    //     })  
+    // },[])
 
     useEffect(()=>{
         fetch('http://localhost:3001/users').then(async function(data){
         let json = await data.json();
-        console.log(json)
-        })  
-    },[])
-    return(<>
-        <div >
+        SetUsers(json.users)
+    })  
+},[])
 
-            <h1>Welcome User you're Email is  __  and _id __</h1>
-            <div className="container">
-                
-           
-            <div className="formDiv">
-            <form >
-                <label>Goods</label>: 
-                <input type="text" placeholder="Example : rice,water,etc" name="Goods"></input>
-                <br></br>
-                <label>Cost</label>: 
-                <input type="number" placeholder="ex : 180" name="cost"></input>
-                <br></br>
-                <label>_id</label>: 
-                <input type="text" placeholder="" name="userID" value={'userID'}></input>
-                <br></br>
-                <button>Add Expenses</button>
+function userExist(){
+    users.forEach((i)=>{
+        if(i.email == email && i.password == password){
+            console.log(i.username)
+        }
+       
+    })
+}
+console.log(users)
+    return <>
+        <div>
+            <label>User email</label>
+          
+            <input type="email" name="email" onChange={(e)=>setEmail(e.target.value)} placeholder="example@gmail.com" required></input>
+            <br></br>
+            <label>Password</label>
+            <input type="password" name="password" onChange={(e)=>setPassword(e.target.value)} placeholder="password"></input>
 
-            </form>
-            </div>
+            <br></br>
+            <button onClick={userExist} type="submit">Login</button>
 
-            <div className="totalDiv">
-            <h2>Total : 1232</h2>
-
-            </div>
-            </div>
-            
         </div>
-    </>)
+    </>
 }
