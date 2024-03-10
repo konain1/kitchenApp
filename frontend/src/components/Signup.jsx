@@ -20,21 +20,20 @@ export function Signup() {
 
         fetch('http://localhost:3001/users').then(async(data)=>{
             let json = await data.json();
-
             setUsers(json.users)
         })
     },[])
 
 
-    if (!users) {
-        // Handle the case where users is null (e.g., wait for users to be fetched)
-        fetch('http://localhost:3001/users').then(async(data)=>{
-            let json = await data.json();
+    // if (!users) {
+    //     // Handle the case where users is null (e.g., wait for users to be fetched)
+    //     fetch('http://localhost:3001/users').then(async(data)=>{
+    //         let json = await data.json();
 
-            setUsers(json.users)
-        })
-        return
-    }
+    //         setUsers(json.users)
+    //     })
+    //     return
+    // }
 
     function signupHandler() {
 
