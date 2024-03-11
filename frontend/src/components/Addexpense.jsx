@@ -9,14 +9,14 @@ export function Addexpense(){
     useEffect(()=>{
         fetch('http://localhost:3001/users').then(async function(data){
         let json = await data.json();
-        console.log(json.users[0]._id)
         setUser(json.users[0])
         })  
     },[])
     return(<>
         <div >
 
-            <h1>Welcome User you're Email is <span style={{backgroundColor:'lightcyan' , color:"red"}}> {user.email} </span>   and _id <span style={{backgroundColor:'lightcyan' , color:"red" , fontSize:'12px'}}> {user._id} </span></h1>
+            <h1>Welcome User you're Email is <span style={{backgroundColor:'lightcyan' , color:"red"}}> {user.email} </span> 
+              and _id <span style={{backgroundColor:'lightcyan' , color:"red" , fontSize:'12px'}}> {user._id} </span></h1>
             <div className="container">
                 
            

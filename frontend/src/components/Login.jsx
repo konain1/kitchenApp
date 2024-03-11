@@ -1,55 +1,64 @@
-import { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Addexpense } from "./Addexpense"; // Import your Add Expense component
 
-export function Login(){
+export function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [users, setUsers] = useState([]);
+  const [redirectTo, setRedirectTo] = useState(null);
+  const [userData, SetUserData] = useState({});
 
-    const [email,setEmail] = useState('')
-    const [password,setPassword] = useState('')
-    const [users,SetUsers] = useState([])
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
-    // useEffect(()=>{
-    //     fetch('http://localhost:3001/login',{
-    //         method:"POST",
-    //         body:JSON.stringify({
-    //             email:email,
-    //             password:password
-    //         }),
-    //         headers:{
-    //             "content-type":"application/json"
-    //         }
-    //     }).then(async function(data){
-    //     let json = await data.json();
-    //     setUserid(json.users[0]._id)
-    //     })  
-    // },[])
-
-    useEffect(()=>{
-        fetch('http://localhost:3001/users').then(async function(data){
-        let json = await data.json();
-        SetUsers(json.users)
-    })  
-},[])
-
-function userExist(){
-    users.forEach((i)=>{
-        if(i.email == email && i.password == password){
-            console.log(i.username)
+  useEffect(() => {
+    fetch("http://localhost:3001/users")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch users");
         }
-       
-    })
-}
-console.log(users)
-    return <>
-        <div>
-            <label>User email</label>
-          
-            <input type="email" name="email" onChange={(e)=>setEmail(e.target.value)} placeholder="example@gmail.com" required></input>
-            <br></br>
-            <label>Password</label>
-            <input type="password" name="password" onChange={(e)=>setPassword(e.target.value)} placeholder="password"></input>
+        return response.json();
+      })
+      .then((data) => setUsers(data.users))
+      .catch((error) => console.error("Error fetching users:", error));
+  }, []);
 
-            <br></br>
-            <button onClick={userExist} type="submit">Login</button>
+  function userExists() {
+    const foundUser = users.find(
+      (user) => user.email === email && user.password === password
+    );
+    if (foundUser) {
+      SetUserData(foundUser);
+      navigate("/add"); // Redirect to add expense page
+    } else {
+      console.log("User not found");
+    }
+  }
 
-        </div>
-    </>
+  // Redirect if redirectTo is set
+  if (redirectTo) {
+    return <Redirect to={redirectTo} />; // Removed due to React Router v6 changes
+  }
+
+  return (
+    <div>
+      <label>User email</label>
+      <input
+        type="email"
+        name="email"
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="example@gmail.com"
+        required
+      />
+      <br />
+      <label>Password</label>
+      <input
+        type="password"
+        name="password"
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="password"
+      />
+      <button onClick={userExists}>Login</button>
+    </div>
+  );
 }
