@@ -28,16 +28,12 @@ export function Login() {
       (user) => user.email === email && user.password === password
     );
     if (foundUser) {
-      SetUserData(foundUser);
-      navigate("/add"); // Redirect to add expense page
+        // console.log(foundUser._id)
+      SetUserData(foundUser._id);
+      navigate("/add",{userData}); // Redirect to add expense page
     } else {
       console.log("User not found");
     }
-  }
-
-  // Redirect if redirectTo is set
-  if (redirectTo) {
-    return <Redirect to={redirectTo} />; // Removed due to React Router v6 changes
   }
 
   return (

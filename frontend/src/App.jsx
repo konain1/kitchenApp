@@ -18,7 +18,6 @@ function App() {
         <Route path='/add' element={<Addexpense />} />
       </Routes>
       <div className='app'>
-        Remove the Login component here if you want to render it inside the route */
         <Login></Login> 
       </div>
     </>
