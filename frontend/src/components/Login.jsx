@@ -30,7 +30,8 @@ export function Login() {
     if (foundUser) {
         // console.log(foundUser._id)
       SetUserData(foundUser._id);
-      navigate("/add",{userData}); // Redirect to add expense page
+      // navigate("/add",{userData}); // Redirect to add expense page
+      navigate("/add", { userData: foundUser._id })
     } else {
       console.log("User not found");
     }

@@ -9,20 +9,25 @@ export function Addexpense() {
   // Fetch user data based on the received userId (if available)
   useEffect(() => {
     if (userId) {
-      fetch(`http://localhost:3001/users/${userId}`) // Fetch user by ID
-        .then(async (data) => {
-          if (!data.ok) {
-            throw new Error("Failed to fetch user data");
-          }
-          let json = await data.json();
-
-         const userExists =  json.find((user)=> user._id = userId)
-         console.log(userExists)
-          setUser(json);
-        })
-        .catch((error) => console.error("Error fetching user:", error));
+        console.log("Received userId:", userId);
+        fetch(`http://localhost:3001/users/${userId}`) // Fetch user by ID
+            .then(async (data) => {
+                if (!data.ok) {
+                    throw new Error("Failed to fetch user data");
+                }
+                const json = await data.json();
+                if (json.length > 0) { // Check if user exists in response
+                    setUser(json[0]); // Set user data (assuming first element)
+                } else {
+                    console.log("User with ID", userId, "not found");
+                }
+            })
+            .catch((error) => console.error("Error fetching user:", error));
+    } else {
+        console.log("userId not received yet");
     }
-  }, [userId]); // Re-run useEffect when userId changes
+}, [userId]);
+
 
   // ... rest of your Addexpense component logic ...
 
