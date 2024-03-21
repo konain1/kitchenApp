@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Addexpense } from "./Addexpense"; // Import your Add Expense component
-
+import UserContext from "../context/UserContext";
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [users, setUsers] = useState([]);
   const [redirectTo, setRedirectTo] = useState(null);
   const [userData, SetUserData] = useState({});
-
+  const contextObj = useContext(UserContext)
   const navigate = useNavigate(); // Initialize useNavigate hook
+
+  console.log(contextObj)
 
   useEffect(() => {
     fetch("http://localhost:3001/users")
@@ -28,10 +30,10 @@ export function Login() {
       (user) => user.email === email && user.password === password
     );
     if (foundUser) {
-        // console.log(foundUser._id)
+      console.log(foundUser)
+        contextObj.setUserOBJ(foundUser)
       SetUserData(foundUser._id);
-      // navigate("/add",{userData}); // Redirect to add expense page
-      navigate("/add", { userData: foundUser._id })
+      navigate("/add")
     } else {
       console.log("User not found");
     }

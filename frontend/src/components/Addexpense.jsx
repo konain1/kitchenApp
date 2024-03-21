@@ -1,11 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // Import useParams
 import "./Addexpense.css";
+import UserContext from "../context/UserContext";
+
+
 
 export function Addexpense() {
+
+
   const [user, setUser] = useState({});
   const { userId } = useParams(); // Access userId from URL params
 
+  const userDetailsContext = useContext(UserContext)
+ 
   // Fetch user data based on the received userId (if available)
   useEffect(() => {
     if (userId) {
@@ -35,13 +42,12 @@ export function Addexpense() {
     <>
       <div>
         <h1>
-          Welcome User! Your Email is{user.email}
-          <span style={{ backgroundColor: "lightcyan", color: "red" }}>
-            {user.email}
+          Welcome ! <span style={{ backgroundColor: "lightcyan", color: "red" }}>
+          {userDetailsContext.userOBJ.username}
           </span>{" "}
-          and _id{" "}
+          and Your _id is {" "}
           <span style={{ backgroundColor: "lightcyan", color: "red", fontSize: "12px" }}>
-            {user._id}
+            {userDetailsContext.userOBJ._id}
           </span>
         </h1>
 
@@ -64,7 +70,7 @@ export function Addexpense() {
                 type="text"
                 placeholder=""
                 name="userID"
-                value={userId || ""} // Pre-fill with userId if available
+                value={userDetailsContext.userOBJ._id|| ""} // Pre-fill with userId if available
               />
               <br />
               <button>Add Expenses</button>
