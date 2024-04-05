@@ -5,6 +5,7 @@ import { Signup } from './components/Signup'
 import { Login } from './components/Login'
 import { Route, Routes } from 'react-router-dom'
 import UserContext from './context/UserContext'
+import LoginPage from './components/LoginPage'
 // import SignIn from  './components/SignIn'
 // Importing the correct functions from the user controller
 // import { signup } from '../../Backend/controller/user'
@@ -18,13 +19,13 @@ function App() {
 
     
       <Routes>
-        <Route path='/login' element={<Login />} />
+        <Route path='/' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/add' element={<Addexpense />} />
 
       </Routes>
       <div className='app'>
-        <Login></Login> 
+      <LoginPage/>
       </div>
       </UserContext.Provider>
       {/* <SignIn/>  */}
