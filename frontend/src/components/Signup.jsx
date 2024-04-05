@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Login } from "./Login";
 import Input from "./Input";
 import { Navigate, useNavigate } from "react-router-dom";
+
+
 export function Signup() {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");

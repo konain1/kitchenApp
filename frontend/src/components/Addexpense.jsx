@@ -9,31 +9,42 @@ export function Addexpense() {
 
 
   const [user, setUser] = useState({});
-  const { userId } = useParams(); // Access userId from URL params
+  // const { userId } = useParams(); // Access userId from URL params
 
   const userDetailsContext = useContext(UserContext)
+  const currentId =  userDetailsContext.userOBJ._id
+ console.log(userDetailsContext._id)
+
+
  
   // Fetch user data based on the received userId (if available)
-  useEffect(() => {
-    if (userId) {
-        console.log("Received userId:", userId);
-        fetch(`http://localhost:3001/users/${userId}`) // Fetch user by ID
-            .then(async (data) => {
-                if (!data.ok) {
-                    throw new Error("Failed to fetch user data");
-                }
-                const json = await data.json();
-                if (json.length > 0) { // Check if user exists in response
-                    setUser(json[0]); // Set user data (assuming first element)
-                } else {
-                    console.log("User with ID", userId, "not found");
-                }
-            })
-            .catch((error) => console.error("Error fetching user:", error));
-    } else {
-        console.log("userId not received yet");
-    }
-}, [userId]);
+  // useEffect(() => {
+ 
+//     if(currentId){
+//       fetch(`http://localhost:3001//userbyid/${currentId}`) // Fetch user by ID
+//       .then(async (data) => {
+//         console.log(data)
+//           if (!data.ok) {
+//               throw new Error("Failed to fetch user data");
+//           }
+//           const json = await data.json();
+//           console.log(json)
+//           if (json.length > 0) { // Check if user exists in response
+//               setUser(json[0]); // Set user data (assuming first element)
+//           } else {
+//               console.log("User with ID" + userDetailsContext.userOBJ._id+  "not found");
+//               console.log(user)
+//           }
+//       })
+//       .catch((error) => console.error("Error fetching user:", error));
+//     }else{
+//       console.log('....fetching Data......')
+//     }
+        
+    
+
+
+// }, [currentId]);
 
 
   // ... rest of your Addexpense component logic ...
