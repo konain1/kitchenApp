@@ -36,7 +36,7 @@ function LoginPage() {
         const foundUser = users.find((user) => user.email === email && user.password === password);
         if (foundUser) {
             contextObj.setUserOBJ(foundUser);
-            navigate("/add");
+            navigate("/dashboard");
         } else {
             console.log("User not found");
         }
@@ -45,7 +45,7 @@ function LoginPage() {
     return (
         <div className="flex justify-center items-center h-screen bg-gray-900">
             <div className="bg-green-700 p-8 rounded-lg shadow-md max-w-md w-full">
-                <h2 className="text-2xl font-semibold mb-4 text-center text-white">Login</h2>
+                <h2 className="text-2xl font-semibold mb-4 text-center text-white" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Login</h2>
                 <div>
                     <div className="mb-4">
                         <label htmlFor="email" className="block text-sm font-medium text-white">Email:</label>
@@ -74,11 +74,11 @@ function LoginPage() {
                         />
                     </div>
 
-                    <button onClick={handleSubmit} className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:bg-green-600 w-full">Login</button>
+                    <button onClick={handleSubmit} className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:bg-green-600 w-full" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Login</button>
 
                     <div className="mt-4 flex justify-between">
-                        <a href="/signup" className="text-green-500 hover:text-green-600">Sign Up</a>
-                        <a href="/forgotpassword" className="text-green-500 hover:text-green-600">Forgot Password</a>
+                        <a href="/signup" className="text-white hover:text-green-600">Sign Up</a>
+                        <a href="/forgotpassword" className="text-red-500 hover:text-green-600">Forgot Password</a>
                     </div>
                 </div>
             </div>

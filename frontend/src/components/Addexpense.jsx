@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // Import useParams
 import "./Addexpense.css";
 import UserContext from "../context/UserContext";
+import Navbar from "./Navbar";
 
 
 
@@ -51,6 +52,7 @@ export function Addexpense() {
 
   return (
     <>
+    <Navbar/>
       <div>
         <h1>
           Welcome ! <span style={{ backgroundColor: "lightcyan", color: "red" }}>
