@@ -37,7 +37,7 @@ function Sidebar() {
                         <MdOutlineSettings className='inline' />
                     </div>
                     {dropdownIndex === 1 && (
-                        <div className='dropdown-menu'>
+                        <div className='dropdown-menu h-[40px] md:h-[100px] md:text-[20px] text-[12px] md:px-2 bg-slate-800 md:font-bold  overflow-y-auto '>
                             {/* Dropdown options */}
                             <ul>
                                 <li>Option 1</li>
@@ -53,12 +53,12 @@ function Sidebar() {
                         <FaUsers className='inline' />
                     </div>
                     {dropdownIndex === 2 && (
-                        <div className='dropdown-menu'>
+                        <div className='dropdown-menu h-[40px] md:h-[100px] md:text-[20px] text-[12px] md:px-2 bg-slate-800 md:font-bold  overflow-y-auto'>
                             {/* Dropdown options */}
                             <ul>
                                {members.map((member,index)=>{
                                 return(
-                                    <li key={index}>{member.username}</li>
+                                    <button className='block hover:text-green-500' key={index}>{member.username}</button>
                                 )
                                })}
                             </ul>
@@ -71,7 +71,7 @@ function Sidebar() {
                         <MdOutlineLocalGroceryStore className='inline' />
                     </div>
                     {dropdownIndex === 3 && (
-                        <div className='dropdown-menu'>
+                        <div className='dropdown-menu h-[40px] md:h-[100px] md:text-[20px] text-[12px] md:px-2 bg-slate-800 md:font-bold  overflow-y-auto'>
                             {/* Dropdown options */}
                             <ul>
                                 <li>Option 1</li>
@@ -83,7 +83,7 @@ function Sidebar() {
                 </li>
                 <li>
                     <div className='text-white hover:text-green-500 flex items-center absolute bottom-0' onClick={() => toggleDropdown(4)}>
-                        <span className='hidden md:inline px-'>Settings</span>
+                        <span className='hidden md:inline px-2'>Settings</span>
                         <MdOutlineSettings className='' />
                     </div>
                    
