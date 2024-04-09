@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import UserContext from '../context/UserContext'
 import Sidebar from './Sidebar'
+import Overlay from './Overlay'
+import Profile from './Profile'
 
 function Dashboard () {
   const [goods, setGoods] = useState('')
@@ -99,6 +101,7 @@ function Dashboard () {
           </nav> */}
 
           <Sidebar />
+          {/* <Overlay/> */}
 
           {/* Right Side - Content Area */}
           <div className='bg-gray-700 p-4 rounded-lg flex flex-col justify-between h-full w-60%'>

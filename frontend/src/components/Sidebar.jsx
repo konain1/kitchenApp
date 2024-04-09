@@ -84,9 +84,10 @@ function Sidebar() {
                 <li>
                     <div className='text-white hover:text-green-500 flex items-center absolute bottom-0' onClick={() => toggleDropdown(4)}>
                         <span className='hidden md:inline px-2'>Settings</span>
-                        <MdOutlineSettings className='' />
+                        <MdOutlineSettings className='inline' />
                     </div>
-                   
+
+    
                 </li>
             </ul>
         </nav>
