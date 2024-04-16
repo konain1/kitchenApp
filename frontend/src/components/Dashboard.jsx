@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { MdGroupAdd } from "react-icons/md";
 
 import Navbar from './Navbar'
 import UserContext from '../context/UserContext'
 import Sidebar from './Sidebar'
 import Overlay from './Overlay'
 import Profile from './Profile'
+import MembersCard from './DashboardUtilities/MembersCard';
 
 function Dashboard () {
   const [goods, setGoods] = useState('')
@@ -104,7 +106,7 @@ function Dashboard () {
           {/* <Overlay/> */}
 
           {/* Right Side - Content Area */}
-          <div className='bg-gray-700 p-4 rounded-lg flex flex-col justify-between h-full w-60%'>
+          <div className='bg-gray-700 p-4 rounded-lg flex flex-col justify-between h-full w-60% overflow-hidden'>
             <div>
               <p className='text-lg font-semibold'>
                 Welcome, {userDetailsContext.userOBJ.username}
@@ -115,15 +117,16 @@ function Dashboard () {
                 Donec vel velit justo.
               </p>
             </div>
-            <div>
-              <h2 className='text-lg font-semibold mb-2'>Latest News</h2>
-              <ul className='text-sm'>
-                <li>News Item 1</li>
-                <li>News Item 2</li>
-                <li>News Item 3</li>
-                <li>News Item 4</li>
-                <li>News Item 5</li>
-              </ul>
+            <div className='flex justify-start border border-white h-[200px]  overflow-hidden'>
+
+            {/* <div className='border border-white h-full w-[70%]'>members</div> */}
+
+            <MembersCard/>
+            <div className='border mx-10 border-white rounded-full h-10 w-10 flex justify-center items-center cursor-pointer self-center transform hover:scale-110 transition-transform active:scale-95'>
+            <MdGroupAdd />
+             </div>
+
+             
             </div>
             {/* Goods cost and goods names input sections */}
             <div className='flex flex-col gap-2'>
@@ -169,8 +172,7 @@ function Dashboard () {
                       </button>
                       <button
                         onClick={() => handleDelete(index)}
-                        className='bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded-md'
-                      >
+                        className='bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded-md' >
                         Delete
                       </button>
                     </div>
