@@ -117,14 +117,14 @@ function Dashboard () {
                 Donec vel velit justo.
               </p>
             </div>
-            <div className='flex justify-start border border-white h-[200px]  overflow-hidden'>
+            <div className=' '>
 
             {/* <div className='border border-white h-full w-[70%]'>members</div> */}
 
-            <MembersCard/>
-            <div className='border mx-10 border-white rounded-full h-10 w-10 flex justify-center items-center cursor-pointer self-center transform hover:scale-110 transition-transform active:scale-95'>
+            <MembersCard  />
+            {/* <div className='border mx-10 border-white rounded-full h-10 w-10 flex justify-center items-center cursor-pointer self-center transform hover:scale-110 transition-transform active:scale-95'>
             <MdGroupAdd />
-             </div>
+             </div> */}
 
              
             </div>
