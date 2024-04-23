@@ -33,6 +33,8 @@ function Dashboard () {
     }, 3000)
   }
 
+
+  // nothing
   const handleDelete = index => {
     setHistory(prevHistory => prevHistory.filter((item, i) => i !== index))
   }
