@@ -44,6 +44,7 @@ useEffect(() => {
     <div>{item.email}</div>
     <div>{item.username}</div>
     <div>{item._id}</div>
+    
   </div>)}
     
 </Carousel>

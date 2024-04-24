@@ -16,7 +16,6 @@ function Dashboard () {
   const [history, setHistory] = useState([])
 
   const userDetailsContext = useContext(UserContext)
-  console.log(userDetailsContext)
 
   const handleSubmit = () => {
     const newItem = {
