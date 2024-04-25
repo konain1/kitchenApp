@@ -34,26 +34,7 @@ function Dashboard () {
 
 
   // nothing
-  const handleDelete = index => {
-    setHistory(prevHistory => prevHistory.filter((item, i) => i !== index))
-  }
-
-  const handleEdit = index => {
-    const editedGoods = prompt('Enter updated goods:', history[index].goods)
-    const editedCost = parseFloat(
-      prompt('Enter updated cost:', history[index].cost)
-    )
-    if (editedGoods !== null && !isNaN(editedCost)) {
-      const updatedHistory = [...history]
-      updatedHistory[index] = {
-        ...updatedHistory[index],
-        goods: editedGoods,
-        cost: editedCost
-      }
-      setHistory(updatedHistory)
-    }
-  }
-
+ 
   const totalCost = history.reduce((total, item) => total + item.cost, 0)
 
   return (
@@ -167,13 +148,13 @@ function Dashboard () {
                     <div>
                       <button
                         onClick={() => handleEdit(index)}
-                        className='bg-yellow-500  hover:bg-yellow-600  text-white px-2 py-1 rounded-md mr-2'
+                        className='bg-yellow-500  hover:bg-yellow-600  flex justify-center text-white px-2 py-1 rounded-md mr-2'
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => handleDelete(index)}
-                        className='bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded-md' >
+                        className='bg-red-500 hover:bg-red-600  text-white px-2 py-1 rounded-md' >
                         Delete
                       </button>
                     </div>
@@ -181,6 +162,8 @@ function Dashboard () {
                 ))}
               </ul>
             </div>
+
+            {/* <History history={history} /> */}
             {/* Total Cost */}
             <div className='mt-4 p-4 bg-gray-800 rounded-lg'>
               <h3 className='text-lg font-semibold mb-2'>Total Cost</h3>

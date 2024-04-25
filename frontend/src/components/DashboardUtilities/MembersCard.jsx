@@ -40,11 +40,11 @@ useEffect(() => {
     <div  className='w-100 border border-white '>
  
   <Carousel responsive={responsive}>
-  {users.map((item,key)=><div className='h-44 w-100 border border-white flex justify-center items-center  flex-col'>
+  {users.map((item,key)=><div key={key} className='h-44 w-100 border border-white flex justify-center items-center  flex-col'>
     <div>{item.email}</div>
     <div>{item.username}</div>
     <div>{item._id}</div>
-    
+
   </div>)}
     
 </Carousel>
