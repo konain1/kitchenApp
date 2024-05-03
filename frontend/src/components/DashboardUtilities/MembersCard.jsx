@@ -46,6 +46,9 @@ useEffect(() => {
     <div>{item._id}</div>
 
   </div>)}
+
+
+  
     
 </Carousel>
     </div>
