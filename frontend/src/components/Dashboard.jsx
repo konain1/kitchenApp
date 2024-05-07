@@ -99,7 +99,7 @@ function Dashboard () {
                 Donec vel velit justo.
               </p>
             </div>
-            <div className=' '>
+            <div >
 
             {/* <div className='border border-white h-full w-[70%]'>members</div> */}
 
